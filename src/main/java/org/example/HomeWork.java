@@ -1,6 +1,14 @@
 package org.example;
 
+import org.junit.Test;
+
+import static org.example.Executor.evaluateExpression;
+import static org.example.ParenthesesChecker.check;
+import static org.example.Parser.parseExpression;
+import static org.junit.Assert.assertEquals;
+
 public class HomeWork {
+
 
     /**
      * <h1>Задание 1.</h1>
@@ -16,8 +24,10 @@ public class HomeWork {
      * pow(x,y) = x^y
      */
     double calculate(String expr) {
+        if (!check(expr)) {
+            throw new IllegalArgumentException("Invalid expression: " + expr);
+        }
 
-        return 0;
+        return evaluateExpression(parseExpression(expr));
     }
-
 }
